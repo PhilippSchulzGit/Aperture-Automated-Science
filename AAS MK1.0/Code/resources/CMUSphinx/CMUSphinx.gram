@@ -1,0 +1,9 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Grammar for Hello World example
+ */
+
+grammar CMUSphinx;
+
+public <greet> = (hey lettuce | okay lettuce | hello lettuce | hi lettuce | turn off | yes | no | abort | shutdown | reboot | turn lights on | turn lights off | turn eye on | turn eye off | enable sleep mode | reset communication | pause recognition | shut up );
