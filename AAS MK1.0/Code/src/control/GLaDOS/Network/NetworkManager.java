@@ -56,6 +56,7 @@ public class NetworkManager implements NetworkManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("NetworkManager: "+id);
     }
 
     /**

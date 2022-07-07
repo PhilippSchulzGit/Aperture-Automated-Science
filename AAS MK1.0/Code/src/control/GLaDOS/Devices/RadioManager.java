@@ -57,6 +57,7 @@ public class RadioManager implements RadioManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("RadioManager: "+id);
     }
 
     /**

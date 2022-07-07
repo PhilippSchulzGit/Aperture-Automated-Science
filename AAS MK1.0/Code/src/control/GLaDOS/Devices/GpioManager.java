@@ -72,6 +72,7 @@ public class GpioManager implements GpioManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("GpioManager: "+id);
     }
 
     /**

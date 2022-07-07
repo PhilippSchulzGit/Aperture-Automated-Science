@@ -97,5 +97,6 @@ public class VoiceRecognitionManager implements VoiceRecognitionManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("VoiceRecognitionManager: "+id);
     }
 }

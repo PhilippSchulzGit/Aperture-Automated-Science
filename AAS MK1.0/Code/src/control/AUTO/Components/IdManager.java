@@ -55,6 +55,7 @@ public class IdManager implements IdManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("IdManager: "+id);
     }
 
     /**

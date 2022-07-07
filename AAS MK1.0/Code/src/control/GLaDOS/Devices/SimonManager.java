@@ -59,6 +59,7 @@ public class SimonManager implements SimonManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("SimonManager: "+id);
     }
 
     /**

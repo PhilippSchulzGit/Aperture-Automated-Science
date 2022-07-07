@@ -58,6 +58,7 @@ public class FileManager implements FileManagerConstants, ActionHandlingConstant
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("FileManager: "+id);
     }
 
     /**
@@ -80,7 +81,7 @@ public class FileManager implements FileManagerConstants, ActionHandlingConstant
             this.actionQueue.addNewActionToActionQueue(answerAction);
         }
         //TODO: IMPLEMENT METHOD
-        System.out.println("hemlo am filemanager");
+        //System.out.println("hemlo am filemanager");
 
     }
 

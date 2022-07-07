@@ -165,6 +165,7 @@ public class TerminalManager implements TerminalManagerConstants, ActionHandling
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("TerminalManager: "+id);
     }
 
     /**

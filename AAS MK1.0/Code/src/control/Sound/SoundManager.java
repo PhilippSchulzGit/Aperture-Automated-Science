@@ -74,5 +74,6 @@ public class SoundManager implements SoundManagerConstants, ActionHandlingConsta
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("SoundManager: "+id);
     }
 }

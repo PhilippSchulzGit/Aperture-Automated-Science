@@ -7,9 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jsapi" level="project" />
-    <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="sphinx4-core-5prealpha-20160628.232526-10-javadoc" level="project" />
     <orderEntry type="library" name="jSerialComm-2.7.0" level="project" />
+    <orderEntry type="library" name="junit" level="project" />
+    <orderEntry type="library" name="jsapi" level="project" />
+    <orderEntry type="library" name="pi4j-core-javadoc" level="project" />
   </component>
 </module>

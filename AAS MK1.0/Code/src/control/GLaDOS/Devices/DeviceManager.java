@@ -65,6 +65,7 @@ public class DeviceManager implements DeviceManagerConstants, ActionHandlingCons
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("DeviceManager: "+id);
     }
 
     /**

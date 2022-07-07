@@ -59,6 +59,7 @@ public class Auto implements AutoConstants, ActionHandlingConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("Auto: "+id);
     }
 
     /**

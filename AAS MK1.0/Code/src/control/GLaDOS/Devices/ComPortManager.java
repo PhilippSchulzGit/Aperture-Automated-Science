@@ -55,6 +55,7 @@ public class ComPortManager implements ComPortManagerConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("ComPortManager: "+id);
     }
 
     /**

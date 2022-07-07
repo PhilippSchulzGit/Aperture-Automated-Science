@@ -62,6 +62,7 @@ public class Glados implements GladosConstants, ActionHandlingConstants
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("Glados: "+id);
     }
 
     /**

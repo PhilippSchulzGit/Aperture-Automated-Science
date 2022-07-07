@@ -71,6 +71,7 @@ public class ActionQueueManager implements ActionQueueManagerConstants, ActionHa
     public void setOwnID(int id)
     {
         this.ownID = id;
+        System.out.println("ActionQueueManager: "+id);
     }
 
     /**
