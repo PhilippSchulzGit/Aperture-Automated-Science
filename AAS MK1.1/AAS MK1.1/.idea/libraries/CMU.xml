@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="CMU">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/CMU" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/CMU" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/CMU" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/CMU" recursive="false" type="SOURCES" />
+  </library>
+</component>

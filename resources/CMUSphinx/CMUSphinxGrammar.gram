@@ -1,0 +1,29 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Grammar for CMU Sphinx4 voice recognition of AAS MK1.1
+ */
+
+grammar CMUSphinx;
+
+// main grammar combination, put wanted commands here
+public <dialogue> = <dialogue_glados> | <dialogue_auto> | <dialogue_all>;
+
+// dialogue options for Glados
+<dialogue_glados> = turn (lights | eye) <states>;
+// dialogue options for Auto
+<dialogue_auto> = test command;
+// dialogue options that can be executed by any component
+<dialogue_all> = <greetings> | <activation_phrases> | turn off | shut down | reboot | <confirmation> | abort dialogue;
+
+// possible states of a device or component
+<states> = on | off;
+// confirmation options during dialogue
+<confirmation>  = yes | no;
+
+// activation phrases for all components
+<activation_phrases> = (hey | okay) <component_names>;
+// greetings to interact with all components
+<greetings> = (hello | hi) <component_names>;
+// all component names
+<component_names> = lettuce | auto;
