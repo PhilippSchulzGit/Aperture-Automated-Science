@@ -1,0 +1,41 @@
+// general components:	       0 -  999999
+// components of GLaDOS: 1000000 - 1999999
+// components of AUTO:   2000000 - 2999999
+// the current system allows a component depth of 4 (2 digits / component hirarchy)
+// NOTE: each component is granted an own range of IDs
+// example (indents show elements of upper component): 
+// 1000000 GLaDOS
+// 	1030000 DeviceManager
+//		1030200 SimonManager
+//		1030400 ComPortManager
+//			1030401 RadioManager
+//	1020000 NetworkManager
+// each component should be allowed to have up to 100 subcomponents (0...99)
+// lines with '//' at the beginning will be ignored
+// component IDs must be greater than -1!
+
+// ID	ComponentName
+
+// general components
+0 ActionQueueManager
+100 VoiceRecognitionManager
+200 SoundManager
+1000000 Glados
+2000000 Auto
+
+// components of GLaDOS
+1010000 TerminalManager
+1020000 NetworkManager
+1030000 DeviceManager
+1030100 GpioManager
+1030200 SimonManager
+1030300 BodyManager
+1030400 ComPortManager
+1030401 RadioManager
+
+// components of AUTO
+2010000 FileManager
+2020000 IdManager
+
+
+ 
