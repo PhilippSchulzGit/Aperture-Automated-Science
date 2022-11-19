@@ -19,9 +19,10 @@ public interface UtilityFunctionsConstants
     int TRIPLET_SIZE_1 = 0;                                         // size of triplet of 0 digits
     int TRIPLET_SIZE_2 = 1;                                         // size of triplet of 1 digits
     int TRIPLET_SIZE_3 = 2;                                         // size of triplet of 2 digits
+    int TRIPLET_SIZE_4 = 3;                                         // size of triplet of 3 digits
     int TWENTY = 20;                                                // number 20 to distinguish during number to word conversion
 
-    double ROUND_CEILING_FACTOR = 0.5;                              // factor for rounding for numbers >=0.5 correctly
+    double ROUND_CEILING_FACTOR = 0.999;                            // factor for rounding for numbers >=0.5 correctly
 
     String SPACE = " ";                                             // String that contains one space character
     String EMPTY_STRING = "";                                       // empty String

@@ -23,6 +23,17 @@ public class UtilityFunctions implements UtilityFunctionsConstants
     }
 
     /**
+     * Method for converting a given Long into a String of the English language (e.g. 210->"two hundred ten")
+     * @param number Long that should be converted into a String
+     * @return Given number as a String of the English language
+     * @author Philipp Schulz
+     */
+    public static String numberToString(long number)
+    {
+        return numberToString(number+EMPTY_STRING);
+    }
+
+    /**
      * Method for converting a given Double into a String of the English language (e.g. 1,32->"one point three two")
      * @param number Double that should be converted into a String
      * @return Given number as a String of the English language
@@ -46,15 +57,25 @@ public class UtilityFunctions implements UtilityFunctionsConstants
         // initialize floating point and integer parts of number
         long numberDouble = ZERO;
         long numberLong;
+        String floatingPoint=EMPTY_STRING;
         // parse string as numbers for conversion handling
         if(number.contains(POINT))  // if a floating point number is given
         {
-            numberDouble = Long.parseLong(number.substring(number.indexOf(POINT)+INCREMENT));
+            floatingPoint = number.substring(number.indexOf(POINT)+INCREMENT);
+            numberDouble = Long.parseLong(floatingPoint);
             numberLong = Long.parseLong(number.substring(ZERO,number.indexOf(POINT)));
         }
         else    // if a pure integer is given
         {
             numberLong = Long.parseLong(number);
+        }
+        // if the number is negative
+        if(number.contains(MINUS))
+        {
+            // add minus sign and space to return value
+            numberString.append(MINUS_STRING + SPACE);
+            // adjust numbers to avoid multiple minus sings
+            numberLong *= INVERSION_FACTOR;
         }
         // if the integer part of the number is zero
         if(numberLong==ZERO)
@@ -62,27 +83,18 @@ public class UtilityFunctions implements UtilityFunctionsConstants
             // add zero and space to return value
             numberString.append(UNDER_TWENTY[ZERO]).append(SPACE);
         }
-        // if the number is negative
-        if(numberLong<ZERO)
-        {
-            // add minus sign and space to return value
-            numberString.append(MINUS_STRING + SPACE);
-            // adjust numbers to avoid multiple minus sings
-            numberLong *= INVERSION_FACTOR;
-            numberDouble *= INVERSION_FACTOR;
-        }
         // create new strings for adjusted number rest
         String newNumberInt = numberLong+EMPTY_STRING;
         String newNumberFloating = numberDouble+EMPTY_STRING;
         // determine how many triplets are in the integer part of the number
-        int tripletCount = (int)(newNumberInt.length()/TRIPLET_SIZE + ROUND_CEILING_FACTOR + INCREMENT);
+        int tripletCount = (int)((float)newNumberInt.length()/(TRIPLET_SIZE) + ROUND_CEILING_FACTOR);
         // initialize ArrayList that will contain the triplets
         ArrayList<String> triplets = new ArrayList<>();
         // loop over the number of triplets in the integer part of the number
         for(int i = 0; i < tripletCount; i++)
         {
             // check if the integer part of the number is larger than a single triplet
-            if((newNumberInt.length() - (i*TRIPLET_SIZE)) > TRIPLET_SIZE)
+            if(newNumberInt.length()  >= TRIPLET_SIZE)
             {
                 // extract current triplet from number String, starting from right side
                 triplets.add(newNumberInt.substring(newNumberInt.length()-TRIPLET_SIZE));
@@ -104,7 +116,7 @@ public class UtilityFunctions implements UtilityFunctionsConstants
         if(!newNumberFloating.equals(ZERO+EMPTY_STRING))
         {
             // convert the floating point part of the number to single digit words
-            numberString.append(numberToSingleDigits(POINT+newNumberFloating));
+            numberString.append(POINT_STRING + SPACE).append(numberToSingleDigits(floatingPoint));
         }
         // return the final String
         return numberString.toString();
@@ -141,9 +153,9 @@ public class UtilityFunctions implements UtilityFunctionsConstants
                 triplet3 = triplet.substring(TRIPLET_SIZE_2);
                 break;
             default:               // if the String has length 3
-                triplet1 = triplet.substring(ZERO,TRIPLET_SIZE_1);
-                triplet2 = triplet.substring(TRIPLET_SIZE_1,TRIPLET_SIZE_2);
-                triplet3 = triplet.substring(TRIPLET_SIZE_2,TRIPLET_SIZE_3);
+                triplet1 = triplet.substring(TRIPLET_SIZE_1,TRIPLET_SIZE_2);
+                triplet2 = triplet.substring(TRIPLET_SIZE_2,TRIPLET_SIZE_3);
+                triplet3 = triplet.substring(TRIPLET_SIZE_3,TRIPLET_SIZE_4);
                 break;
         }
         // create triplet combinations required for next part
@@ -159,7 +171,7 @@ public class UtilityFunctions implements UtilityFunctionsConstants
                 tripletWords += UNDER_TWENTY[Integer.parseInt(triplet1)] + SPACE + HUNDRED + SPACE;
             }
             // check if triplet23 is less than twenty
-            if(Integer.parseInt(triplet23) < TWENTY)
+            if(Integer.parseInt(triplet23) < TWENTY && Integer.parseInt(triplet1) == ZERO)
             {
                 // add last two digits as one combination
                 tripletWords += UNDER_TWENTY[Integer.parseInt(triplet23)] + SPACE;
@@ -271,16 +283,17 @@ public class UtilityFunctions implements UtilityFunctionsConstants
                 if((doubleWord*NUMBER_PARSE_FACTOR)%NUMBER_PARSE_FACTOR == NUMBER_PARSE_RESULT)
                 {
                     // parse integer to text
-                    words.set(i,numberToString(Integer.parseInt(words.get(i))).trim());
+                    words.set(i,numberToString(Long.parseLong(words.get(i).replace(POINT,EMPTY_STRING))));
                 }
                 else // if number is floating point
                 {
                     // parse double to text
-                    words.set(i,numberToString(doubleWord).trim());
+                    words.set(i,numberToString(doubleWord));
                 }
             }
             catch(Exception e)
             {
+                e.printStackTrace();
                 // word is not a number, remove point
                 words.set(i,words.get(i).replace(POINT,EMPTY_STRING));
                 // replace common characters with appropriate words
