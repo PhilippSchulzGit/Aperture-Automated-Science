@@ -70,7 +70,7 @@ public class UtilityFunctions implements UtilityFunctionsConstants
             numberLong = Long.parseLong(number);
         }
         // if the number is negative
-        if(number.contains(MINUS))
+        if(number.trim().startsWith(MINUS))
         {
             // add minus sign and space to return value
             numberString.append(MINUS_STRING + SPACE);
@@ -293,7 +293,6 @@ public class UtilityFunctions implements UtilityFunctionsConstants
             }
             catch(Exception e)
             {
-                e.printStackTrace();
                 // word is not a number, remove point
                 words.set(i,words.get(i).replace(POINT,EMPTY_STRING));
                 // replace common characters with appropriate words
